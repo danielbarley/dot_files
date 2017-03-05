@@ -1,0 +1,108 @@
+" General Settings {{{
+set nocompatible
+set rnu
+set nu
+set showcmd
+set modelines=1
+set wildmenu
+set lazyredraw
+set splitright
+set linebreak
+set ttyfast
+"disable docstring window for jedi
+autocmd FileType python setlocal completeopt-=preview
+let maleader=" "
+let maplocalleader=" "
+" }}}
+
+" Plugins {{{
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle
+call vundle#begin()
+" Github Plugins {{{
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'godlygeek/tabular'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'Raimondi/delimitMate'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" }}}
+call vundle#end()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+" }}}
+
+" Plugin Settings {{{
+" NerdTree {{{
+noremap <C-f> :NERDTreeToggle<CR>
+let g:NERDTreeWinPos="right"
+"}}}
+
+" Tabular {{{
+map <leader>tb :Tabularize/
+" }}}
+
+" {{{ Latex-Box
+let g:LatexBox_latexmk_async=0
+let g:LatexBox_output_type="pdf"
+let g:LatexBox_quickfix=2
+let g:LatexBox_show_warnings=0
+let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
+let g:LatexBox_viewer="evince"
+let g:LatexBox_fold_toc=0
+let g:tex_flavor='latex'
+map <leader>ltt :LatexTOCToggle<CR>
+map <leader>ltm :w<CR>:Latexmk<CR>
+map <leader>ltv :LatexView<CR>
+let g:LatexBox_custom_inden=0
+" }}}
+" }}}
+
+" Filetype Specifics {{{
+filetype off
+filetype plugin indent on
+filetype indent on
+" }}}
+
+" Search and Fold {{{
+set showmatch " show matching parantheses
+set incsearch "search while typing
+set hlsearch "highlight seach
+set ignorecase
+set smartcase
+nnoremap <leader> <Esc> :nohlsearch<cr>
+nnoremap gV '[v']
+set foldenable
+set foldmethod=marker
+" }}}
+
+" Tabs {{{
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set smarttab
+" }}}
+
+" Colors {{{
+syntax enable
+colorscheme badwolf
+set t_Co=256
+" }}}
+
+" Functions {{{
+" }}}
+
+" Statusline {{{
+set showmode
+set laststatus=2
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0

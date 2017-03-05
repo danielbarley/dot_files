@@ -15,7 +15,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango:MorePerfectDOSVGA 10
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -150,10 +150,14 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	position top
-        status_command i3status
+        # status_command i3status
+        status_command i3blocks -c ~/.i3/i3blocks.conf
+        colors{
+            background #16191B
+        }
 }
 
-exec_always feh --bg-scale ~/Wallpapers/wallpaper3.jpg
+exec_always feh --bg-scale ~/Wallpapers/America.jpg
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -171,5 +175,11 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 bindsym $mod+shift+x exec i3lock
+bindsym $mod+shift+p exec gnome-screenshot
 
 exec nm-applet
+
+exec --nostartup-id dropbox start
+
+bindsym $mod+shift+t exec xterm -fa 'Source Code Pro' -fs 10 ranger
+bindsym $mod+t exec xterm -fa 'Source Code Pro' -fs 10 
