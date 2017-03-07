@@ -9,9 +9,10 @@ set lazyredraw
 set splitright
 set linebreak
 set ttyfast
+set backspace=2
 "disable docstring window for jedi
 autocmd FileType python setlocal completeopt-=preview
-let maleader=" "
+let mapleader=" "
 let maplocalleader=" "
 " }}}
 
@@ -33,6 +34,8 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'sjl/gundo.vim'
+Plugin 'Chiel92/vim-autoformat'
 " }}}
 call vundle#end()
 " let Vundle manage Vundle, required
@@ -63,12 +66,38 @@ map <leader>ltm :w<CR>:Latexmk<CR>
 map <leader>ltv :LatexView<CR>
 let g:LatexBox_custom_inden=0
 " }}}
+
+" Gundo {{{
+map <leader>gt :GundoToggle<CR>
+" }}}
+"
+" Autoformat {{{
+nnoremap <F3> :Autoformat<CR>
+" }}}
 " }}}
 
 " Filetype Specifics {{{
 filetype off
 filetype plugin indent on
 filetype indent on
+
+" C++/SDL {{{
+augroup cpp
+    autocmd!
+    " Compile current file to prototype called Output and execute it
+    " TODO add function to link exernal librarys
+    autocmd FileType cpp nnoremap <leader>c :!g++ % -o Output<CR>
+    autocmd FileType cpp nnoremap <leader>r :!./Output<CR>
+augroup END
+" }}}
+
+" Python {{{
+augroup python_files
+    autocmd!
+    " Execute current script with pyton3
+    autocmd FileType py nnoremap <leader>r :!python3 %<CR>
+augroup END
+" }}}
 " }}}
 
 " Search and Fold {{{
