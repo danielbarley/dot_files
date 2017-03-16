@@ -4,15 +4,19 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 #vim
 
-ln -s ${BASEDIR}/vim/vimrc ~/.vimrc
-ln -s ${BASEDIR}/vim/ ~/.vim
+ln -sfv ${BASEDIR}/vim/vimrc ~/.vimrc
+
+rm -rf ~/.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 #tmux
 
-ln -s ${BASEDIR}/tmux/tmux.conf ~/.tmux.conf
+ln -sfv ${BASEDIR}/tmux/tmux.conf ~/.tmux.conf
 
 #i3
 
-ln -s ${BASEDIR}/i3/config ~/.i3/config
-ln -s ${BASEDIR}/i3/i3blocks.conf ~/.i3/i3blocks.conf
+ln -sfv ${BASEDIR}/i3/config ~/.i3/config
+ln -sfv ${BASEDIR}/i3/i3blocks.conf ~/.i3/i3blocks.conf
+
+
 

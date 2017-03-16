@@ -16,10 +16,16 @@ let mapleader=" "
 let maplocalleader=" "
 " }}}
 
+" General Mapings {{{
+" use shift+tab to jump out of current deliminaters
+inoremap <s-tab> <ESC>%%a
+" }}}
+
 " Plugins {{{
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 " Github Plugins {{{
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -36,7 +42,14 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sjl/gundo.vim'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-scripts/FuzzyFinder'
+Plugin 'eparreno/vim-l9'
+Plugin 'lukerandall/haskellmode-vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'ervandew/supertab'
 " }}}
+
 call vundle#end()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -70,10 +83,15 @@ let g:LatexBox_custom_inden=0
 " Gundo {{{
 map <leader>gt :GundoToggle<CR>
 " }}}
-"
+
 " Autoformat {{{
 nnoremap <F3> :Autoformat<CR>
 " }}}
+
+" FuzzyFinder {{{
+nnoremap <F5> :FufFile<Cr>
+" }}}
+
 " }}}
 
 " Filetype Specifics {{{
@@ -97,6 +115,15 @@ augroup python_files
     " Execute current script with pyton3
     autocmd FileType py nnoremap <leader>r :!python3 %<CR>
 augroup END
+" }}}
+"
+" Haskell {{{
+augroup haskell_files
+    autocmd!
+    au BufEnter *.hs compiler ghc
+augroup END
+
+let g:haddock_browser="/usr/bin/firefox"
 " }}}
 " }}}
 
@@ -122,7 +149,7 @@ set smarttab
 
 " Colors {{{
 syntax enable
-colorscheme badwolf
+colorscheme onedark
 set t_Co=256
 " }}}
 
