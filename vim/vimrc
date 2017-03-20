@@ -48,6 +48,7 @@ Plugin 'eparreno/vim-l9'
 Plugin 'lukerandall/haskellmode-vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'ervandew/supertab'
+Plugin 'valloric/YouCompleteMe'
 " }}}
 
 call vundle#end()
@@ -91,7 +92,6 @@ nnoremap <F3> :Autoformat<CR>
 " FuzzyFinder {{{
 nnoremap <F5> :FufFile<Cr>
 " }}}
-
 " }}}
 
 " Filetype Specifics {{{
