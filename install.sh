@@ -9,6 +9,8 @@ ln -sfv ${BASEDIR}/vim/vimrc ~/.vimrc
 rm -rf ~/.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+vim +PluginInstall
+
 #tmux
 
 ln -sfv ${BASEDIR}/tmux/tmux.conf ~/.tmux.conf

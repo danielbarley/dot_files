@@ -18,7 +18,7 @@ let maplocalleader=" "
 
 " General Mapings {{{
 " use shift+tab to jump out of current deliminaters
-inoremap <s-tab> <ESC>%%a
+"inoremap <s-tab> <ESC>%%a
 " }}}
 
 " Plugins {{{
@@ -47,7 +47,7 @@ Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'eparreno/vim-l9'
 Plugin 'lukerandall/haskellmode-vim'
 Plugin 'Yggdroot/indentLine'
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 Plugin 'valloric/YouCompleteMe'
 " }}}
 
@@ -91,6 +91,10 @@ nnoremap <F3> :Autoformat<CR>
 
 " FuzzyFinder {{{
 nnoremap <F5> :FufFile<Cr>
+" }}}
+"
+" YouCompleteMe {{{
+let g:ycm_key_list_previous_completion=['<Up>']
 " }}}
 " }}}
 
