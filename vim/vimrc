@@ -16,9 +16,20 @@ let mapleader=" "
 let maplocalleader=" "
 " }}}
 
-" General Mapings {{{
+" General Mappings {{{
 " use shift+tab to jump out of current deliminaters
 "inoremap <s-tab> <ESC>%%a
+
+" substitute entered pattern globally
+nnoremap <leader>sa :%s//gc<Left><Left><Left> 
+" substitute pattern under cursor globally
+nnoremap <leader>ss :%s/<C-r><C-w>//gc<Left><Left><Left>
+
+" substitute locally
+nnoremap <leader>sd :s//g<Left><Left>
+vnoremap <leader>sd :s//g<Left><Left>
+
+nnoremap <leader>c :set cursorline! cursorcolumn!<CR>
 " }}}
 
 " Plugins {{{
@@ -158,6 +169,32 @@ set t_Co=256
 " }}}
 
 " Functions {{{
+function! FindAndReplaceAll(from, to)
+    echo a:from
+    execute "%s/" . a:from . "/" . a:to . "/gc"
+endfunction
+
+function! FindAndReplaceLocal(from, to)
+    echo a:from
+    execute "s/" . a:from . "/" . a:to . "/g"
+endfunction
+
+function! EnableCursorLine()
+    execute "hi clear CursorLine"
+    execute "hi CursorLine cterm=underline gui=underline"
+endfunction
+
+" }}}
+
+" Commands {{{
+" open the vimrc file in new buffer
+command! -nargs=0 -complete=command Vimrc tabe $MYVIMRC
+" change spelling language to german
+command! -nargs=0 -complete=command SpellGer setlocal spelllang=de
+" change spelling language to english
+command! -nargs=0 -complete=command SpellEng setlocal spelllang=en
+" Change Cursorline to actual line
+command! -nargs=0 -complete=command Line :call EnableCursorLine()<CR>
 " }}}
 
 " Statusline {{{
