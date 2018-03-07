@@ -1,17 +1,17 @@
-    " General Settings {{{
-    set nocompatible
-    set rnu
-    set nu
-    set showcmd
-    set modelines=1
-    set wildmenu
-    set lazyredraw
-    set splitright
-    set linebreak
-    set ttyfast
-    set backspace=2
-    set vb t_vb=
-    let &colorcolumn="80"
+" General Settings {{{
+set nocompatible
+set rnu
+set nu
+set showcmd
+set modelines=1
+set wildmenu
+set lazyredraw
+set splitright
+set linebreak
+set ttyfast
+set backspace=2
+set vb t_vb=
+let &colorcolumn="80"
 "disable docstring window for jedi
 autocmd FileType python setlocal completeopt-=preview
 let mapleader=" "
@@ -30,7 +30,7 @@ set guioptions-=L  "remove left-hand scroll bar
 "inoremap <s-tab> <ESC>%%a
 
 " substitute entered pattern globally
-nnoremap <leader>sa :%s//gc<Left><Left><Left> 
+nnoremap <leader>sa :%s//gc<Left><Left><Left>
 " substitute pattern under cursor globally
 nnoremap <leader>ss :%s/<C-r><C-w>//gc<Left><Left><Left>
 vnoremap <leader>ss :%s/<C-r><C-w>//gc<Left><Left><Left>
@@ -40,6 +40,10 @@ nnoremap <leader>sd :s//g<Left><Left>
 vnoremap <leader>sd :s//g<Left><Left>
 
 nnoremap <leader>c :set cursorline! cursorcolumn!<CR>
+
+" Kill all trailing whitespaces
+nnoremap <leader>wh :%s/\s\+$//e
+
 " }}}
 
 " Plugins {{{
@@ -59,7 +63,7 @@ Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets' 
+Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sjl/gundo.vim'
@@ -77,6 +81,7 @@ Plugin 'reedes/vim-lexical'
 Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'chrisbra/csv.vim'
 Plugin 'majutsushi/tagbar'
+Plugin 'brennier/quicktex'
 " }}}
 
 call vundle#end()
@@ -99,7 +104,8 @@ let g:LatexBox_latexmk_async=0
 let g:LatexBox_output_type="pdf"
 let g:LatexBox_quickfix=2
 let g:LatexBox_show_warnings=0
-let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
+"let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
+let g:LatexBox_latexmk_options="-pdf -xelatex"
 let g:LatexBox_viewer="zathura"
 let g:LatexBox_fold_toc=0
 let g:tex_flavor='latex'
@@ -137,6 +143,32 @@ let g:UltiSnipsExpandTrigger="<s-tab>"
 nmap <F8> :TagbarToggle<CR>
 " }}} Tagbar "
 
+" Quicktex {{{ "
+let g:quicktex_tex = {
+    \' '   : "\<ESC>/<+.*+>\<CR>\"_c/+>/e\<CR>",
+    \'displ'   : '\( <+++> \) <++>',
+    \'inl'   : '$ <+++> $ <++>',
+    \'SI'   : '\SI{<+++>}{<++>} <++>',
+    \'prf' : "\\begin{proof}\<CR><+++>\<CR>\\end{proof}",
+    \'eq' : "\\begin{equation}\<CR><+++>\<CR>\\end{equation}<++>",
+    \'al' : "\\begin{align}\<CR><+++>\<CR>\\end{align}<++>",
+\}
+
+let g:quicktex_math = {
+    \' '    : "\<ESC>/<+.*+>\<CR>\"_c/+>/e\<CR>",
+    \'eq'   : '= ',
+    \'SI'   : '\SI{<+++>}{<++>} <++>',
+    \'set'  : '\{ <+++> \} <++>',
+    \'frac' : '\frac{<+++>}{<++>} <++>',
+    \'sqrt' : '\sqrt{<+++>}{<++>} <++>',
+    \'sub'  : '_{<+++>} <++>',
+    \'pow'  : '^{<+++>} <++>',
+    \'nabla': '\nabla',
+    \'del'  : '\partial',
+    \'in'   : '\in ',
+\}
+" }}} Quicktex "
+
 " }}}
 
 " Filetype Specifics {{{
@@ -158,7 +190,7 @@ augroup END
 augroup python_files
     autocmd!
     " Execute current script with pyton3
-    autocmd FileType py nnoremap <leader>r :!python3 %<CR>
+    autocmd FileType python nnoremap <F10> :exec '!python3' shellescape(@%, 1)<CR>
 augroup END
 " }}}
 
@@ -173,7 +205,7 @@ let g:haddock_browser="/usr/bin/firefox"
 
 " LaTeX {{{
 let g:tex_conceal=""
-" }}} 
+" }}}
 
 " Prose(tex, txt, markdown {{{
 augroup lexical
@@ -207,9 +239,12 @@ set smarttab
 
 " Colors {{{
 syntax enable
-colorscheme gruvbox
-set background=dark
+"set background=dark
 set t_Co=256
+autocmd GUIEnter * set vb t_vb=
+autocmd VimEnter * set vb t_vb=
+"colorscheme behelit
+colorscheme badwolf
 " }}}
 
 " Functions {{{
@@ -227,7 +262,6 @@ function! EnableCursorLine()
     execute "hi clear CursorLine"
     execute "hi CursorLine cterm=underline gui=underline"
 endfunction
-
 " }}}
 
 " Commands {{{
