@@ -82,6 +82,8 @@ Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'chrisbra/csv.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'brennier/quicktex'
+"Plugin 'godlygeek/csapprox'
+Plugin 'quabug/vim-gdscript'
 " }}}
 
 call vundle#end()
@@ -147,6 +149,7 @@ nmap <F8> :TagbarToggle<CR>
 let g:quicktex_tex = {
     \' '   : "\<ESC>/<+.*+>\<CR>\"_c/+>/e\<CR>",
     \'displ'   : '\( <+++> \) <++>',
+    \'mline'   : '\[ <+++> \] <++>',
     \'inl'   : '$ <+++> $ <++>',
     \'SI'   : '\SI{<+++>}{<++>} <++>',
     \'prf' : "\\begin{proof}\<CR><+++>\<CR>\\end{proof}",
@@ -243,7 +246,7 @@ syntax enable
 set t_Co=256
 autocmd GUIEnter * set vb t_vb=
 autocmd VimEnter * set vb t_vb=
-"colorscheme behelit
+"colorscheme elflord
 colorscheme badwolf
 " }}}
 
@@ -276,8 +279,8 @@ command! -nargs=0 -complete=command Line :call EnableCursorLine()<CR>
 " }}}
 
 " Statusline {{{
-set showmode
-set laststatus=2
+"set showmode
+"set laststatus=2
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
