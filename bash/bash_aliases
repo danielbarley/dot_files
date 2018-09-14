@@ -1,0 +1,17 @@
+# ~/.bash_aliases
+
+# modify existing commands {{{ #
+alias mkdir="mkdir -pv"
+alias df="df -Tha --total"
+alias du="du -ach | sort -h"
+alias ps="ps auxf"
+alias free="free -mt"
+alias wget="wget -c"
+# }}} modify existing commands #
+
+# new commands {{{ #
+alias la="ls -lhA"
+alias fhere="find . -name "
+alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias histgrep="history | grep"
+# }}} new commands #

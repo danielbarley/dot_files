@@ -1,0 +1,87 @@
+!~/.Xresources
+
+/* general settings {{{ */
+*international: true
+*customization: -color
+
+*color0:  #282828
+*color1:  #cc241d
+*color2:  #98971a
+*color3:  #d79921
+*color4:  #458588
+*color5:  #b16286
+*color6:  #689d6a
+*color7:  #a89984
+*color8:  #928374
+*color9:  #fb4934
+*color10: #b8bb26
+*color11: #fabd2f
+*color12: #83a598
+*color13: #d3869b
+*color14: #8ec07c
+*color15: #ebdbb2
+*colorBD: #ffffff
+/* }}} general settings */
+
+/* urxvt settings {{{ */
+
+/* bell {{{ */
+Rxvt*visualBell:   false
+URxvt.urgentOnBell: false
+URxvt.termName: rxvt-256color
+/* }}} bell */
+
+/* scrolling {{{ */
+Rxvt*scrollBar:    false
+URxvt.thickness: 4
+URxvt.scrollBar_floating: false
+URxvt.scrollstyle: plain
+/* }}} scrolling */
+
+/* colors {{{ */
+Rxvt*background:   #282828
+Rxvt*foreground:   #ebdbb2
+URxvt.underlineColor: #777777
+/* }}} colors */
+
+/* font {{{ */
+URxvt.font: xft:DejaVu Sans Mono:medium:size=10
+URxvt.boldFont: xft:DejaVu Sans Mono:bold:size=10
+URxvt.italicFont: xft:DejaVu Sans Mono:italic:size=10
+URxvt.boldItalicFont:
+URxvt.letterSpace: 0
+/* }}} font */
+
+/* iso {{{ */
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+/* }}} iso */
+
+/* perl extensions {{{ */
+URxvt.perl-ext:    default,searchable-scrollback<C-S-question>,matcher,remote-clipboard,selection-autotransform,font-size
+URxvt.urlLauncher: w3m
+/* }}} perl extensions */
+
+/* key bindings {{{ */
+URxvt.keysym.KP_Up: string:\033[A
+URxvt.keysym.KP_Down: string:\033[B
+URxvt.keysym.KP_Right: string:\033[C
+URxvt.keysym.KP_Left: string:\033[D
+URxvt.keysym.KP_Begin: string:\033[E
+URxvt.keysym.KP_Insert: string:\033[2~
+URxvt.keysym.KP_Delete: string:\033[3~
+URxvt.keysym.KP_Next: string:\033[5~
+URxvt.keysym.KP_Prior: string:\033[6~
+URxvt.keysym.KP_Home: string:\033[7~
+URxvt.keysym.KP_End: string:\033[8~
+URxvt.keysym.KP_Enter: string:\015
+URxvt.keysym.KP_Add: string:+
+URxvt.keysym.KP_Subtract: string:-
+URxvt.keysym.KP_Multiply: string:*
+URxvt.keysym.KP_Divide: string:/
+
+URxvt.keysym.C-9:            perl:font-size:decrease
+URxvt.keysym.C-0:            perl:font-size:increase
+/* }}} key bindings */
+
+/* }}} urxvt settings */
