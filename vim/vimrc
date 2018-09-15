@@ -85,6 +85,9 @@ Plugin 'brennier/quicktex'
 "Plugin 'godlygeek/csapprox'
 Plugin 'quabug/vim-gdscript'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'airblade/vim-gitgutter'
+"Plugin 'edkolev/promptline.vim'
+"Plugin 'edkolev/tmuxline.vim'
 " }}}
 
 call vundle#end()
@@ -93,7 +96,7 @@ Plugin 'VundleVim/Vundle.vim'
 " }}}
 
 " Plugin Settings {{{
-" airline {{{
+" Airline {{{
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 "if !exists('g:airline_symbols')
@@ -113,6 +116,19 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_symbols.spell = 'Ꞩ'
 "let g:airline_symbols.notexists = 'Ɇ'
 "let g:airline_symbols.whitespace = 'Ξ'
+" }}}
+
+" Syntastic {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = "\u2717"
+let g:syntastic_warning_symbol = "\u26A0"
 " }}}
 
 " NerdTree {{{
@@ -305,7 +321,7 @@ command! -nargs=0 -complete=command Line :call EnableCursorLine()<CR>
 " }}}
 
 " Statusline {{{
-"set showmode
+set noshowmode
 "set laststatus=2
 " }}}
 
