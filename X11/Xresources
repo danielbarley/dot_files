@@ -39,15 +39,17 @@ URxvt.scrollstyle: plain
 /* }}} scrolling */
 
 /* colors {{{ */
+urxvt*depth: 32
 Rxvt*background:   #282828
 Rxvt*foreground:   #ebdbb2
 URxvt.underlineColor: #777777
 /* }}} colors */
 
 /* font {{{ */
-URxvt.font: xft:DejaVu Sans Mono:medium:size=10
-URxvt.boldFont: xft:DejaVu Sans Mono:bold:size=10
-URxvt.italicFont: xft:DejaVu Sans Mono:italic:size=10
+#define FONTSIZE 8
+URxvt.font: xft:Terminess Powerline:medium:size=FONTSIZE
+URxvt.boldFont: xft:Terminess Powerline:bold:size=FONTSIZE
+URxvt.italicFont: xft:Terminess Powerline:italic:size=FONTSIZE
 URxvt.boldItalicFont:
 URxvt.letterSpace: 0
 /* }}} font */
