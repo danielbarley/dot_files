@@ -278,7 +278,7 @@ set listchars=tab:>-
 
 " Colors {{{
 syntax enable
-"set t_Co=256
+set t_Co=256
 autocmd GUIEnter * set vb t_vb=
 autocmd VimEnter * set vb t_vb=
 set background=dark

@@ -25,7 +25,7 @@ case "$TERM" in
 esac
 
 if [ "$color_prompt" = yes ]; then
-	PS1='╔══╡\e[1;37m\u\e[m│\e[1;34m\h\e[m│\e[1;32m\w\e[m║ \e[1;35m$(git branch 2>/dev/null | sed -n "s/* \(.*\)/\1 /p")\e[m\n╚═╡\e[1;36m\@\e[m╞══➤ '
+	PS1='╔══╡\e[1;37m\u\e[m│\e[1;34m\h\e[m│\e[1;32m\w\e[m│ \e[1;35m$(git branch 2>/dev/null | sed -n "s/* \(.*\)/\1 /p")\e[m\n╚═╡\e[1;36m\@\e[m╞══➤ '
 else
 	PS1='╔══╡\u│\w║ $(git branch 2>/dev/null | sed -n "s/* \(.*\)/\1 /p")\n╚═╡\@╞══➤ '
 fi
@@ -77,5 +77,6 @@ fi
 # }}} completion #
 
 # junk {{{ #
-fortune science -s | cowsay -f owl | boxes -d diamonds
+fortune computers -s | cowsay -f owl | boxes -d diamonds
+[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
 # }}} junk #

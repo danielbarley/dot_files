@@ -46,11 +46,18 @@ URxvt.underlineColor: #777777
 /* }}} colors */
 
 /* font {{{ */
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
 #define FONTSIZE 8
-URxvt.font: xft:Terminess Powerline:medium:size=FONTSIZE
-URxvt.boldFont: xft:Terminess Powerline:bold:size=FONTSIZE
-URxvt.italicFont: xft:Terminess Powerline:italic:size=FONTSIZE
-URxvt.boldItalicFont:
+#define FONT Terminess Powerline
+URxvt.font: xft:FONT:size=FONTSIZE,style=regular
+URxvt.boldFont: xft:FONT:size=FONTSIZE,style=bold
+URxvt.italicFont: xft:FONT:size=FONTSIZE,style=italic
+URxvt.boldItalicFont: xft:FONT:size=FONTSIZE,style=bolditalic
 URxvt.letterSpace: 0
 /* }}} font */
 
