@@ -13,16 +13,20 @@ then
 	rm -rf ~/.vim
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+	read -p "Using NeoVim? " -n 1 -r
+	echo
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		mkdir -pv ~/.config/nvim
+		ln -sfv ~/.vim ~/.config/nvim
+		ln -sfv ${BASEDIR}/vim/vimrc ~/.config/nvim/init.vim
+	fi
+
 	vim +PluginInstall
 
 	#tmux
 
 	ln -sfv ${BASEDIR}/tmux/tmux.conf ~/.tmux.conf
-
-	#i3
-
-	ln -sfv ${BASEDIR}/i3/config ~/.config/i3/config
-	ln -sfv ${BASEDIR}/i3/i3blocks.conf ~/.config/i3/i3blocks.conf
 
 	#bash
 
@@ -33,4 +37,10 @@ then
 
 	ln -svf ${BASEDIR}/X11/Xresources ~/.Xresources
 	xrdb -merge ~/.Xresources
+
+	#liquidprompt
+
+	ln -svf ${BASEDIR}/liquidprompt/liquidpromptrc ~/.config/liquidpromptrc
+	ln -svf ${BASEDIR}/liquidprompt/prompt.theme ~/.config/prompt.theme
+
 fi

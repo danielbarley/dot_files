@@ -26,7 +26,8 @@
 /* urxvt settings {{{ */
 
 /* bell {{{ */
-Rxvt*visualBell:   false
+Rxvt*visualBell:    false
+URxvt.visualBell:   false
 URxvt.urgentOnBell: false
 URxvt.termName: rxvt-256color
 /* }}} bell */

@@ -11,6 +11,7 @@ set linebreak
 set ttyfast
 set backspace=2
 set vb t_vb=
+set directory=$HOME/.vim/swapfiles//
 let &colorcolumn="80"
 "disable docstring window for jedi
 autocmd FileType python setlocal completeopt-=preview
@@ -54,6 +55,7 @@ call vundle#begin()
 " Github Plugins {{{
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-eunuch'
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
@@ -88,6 +90,10 @@ Plugin 'rhysd/vim-clang-format'
 Plugin 'airblade/vim-gitgutter'
 "Plugin 'edkolev/promptline.vim'
 "Plugin 'edkolev/tmuxline.vim'
+Plugin 'vhda/verilog_systemverilog.vim'
+Plugin 'adelarsq/vim-matchit'
+Plugin 'jreybert/vimagit'
+Plugin 'sheerun/vim-polyglot'
 " }}}
 
 call vundle#end()
@@ -97,25 +103,50 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Plugin Settings {{{
 " Airline {{{
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-"if !exists('g:airline_symbols')
-	"let g:airline_symbols = {}
-"endif
+let g:airline_detect_iminsert=1
 
-"" unicode symbols
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-"let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-"let g:airline_symbols.crypt = '🔒'
-"let g:airline_symbols.linenr = '☰'
-"let g:airline_symbols.maxlinenr = '㏑'
-"let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.spell = 'Ꞩ'
-"let g:airline_symbols.notexists = 'Ɇ'
-"let g:airline_symbols.whitespace = 'Ξ'
+if (match(system('hostname'), helvetica) >= 0)
+	let g:airline_powerline_fonts = 0
+else
+	let g:airline_powerline_fonts = 1
+
+	if !exists('g:airline_symbols')
+		let g:airline_symbols = {}
+	endif
+
+	let g:airline_symbols.linenr = '↕'
+	let g:airline_symbols.readonly = ''
+	let g:airline_symbols.notexists = 'Ɇ'
+	let g:airline_symbols.whitespace = 'Ξ'
+
+	let airline#extensions#syntastic#warning_symbol = '☼'
+	let airline#extensions#syntastic#error_symbol = '✗'
+	let g:airline#extensions#ycm#error_symbol = '☼'
+	let g:airline#extensions#ycm#warning_symbol = '✗'
+endif
+
+let g:airline#extensions#cursormode#enabled = 0
+
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
+let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
+
+" fixes unnecessary redraw, when e.g. opening Gundo window
+let airline#extensions#tabline#ignore_bufadd_pat =
+	\ '\c\vgundo|undotree|vimfiler|tagbar|nerd_tree'
 " }}}
 
 " Syntastic {{{
@@ -145,27 +176,40 @@ let g:LatexBox_latexmk_async=0
 let g:LatexBox_output_type="pdf"
 let g:LatexBox_quickfix=2
 let g:LatexBox_show_warnings=0
-"let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
-let g:LatexBox_latexmk_options="-pdf -xelatex"
+let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
+"let g:LatexBox_latexmk_options="-pdf -xelatex"
 let g:LatexBox_viewer="zathura"
 let g:LatexBox_fold_toc=0
 let g:tex_flavor='latex'
 map <leader>lt :LatexTOCToggle<CR>
 map <leader>lm :w<CR>:Latexmk<CR>
 map <leader>lv :LatexView<CR>
-let g:LatexBox_custom_inden=0
+let g:LatexBox_custom_indent=0
 " }}}
 
 " Gundo {{{
-map <leader>gt :GundoToggle<CR>
+nnoremap <F10> :GundoToggle<CR>
 " }}}
 
 " Autoformat {{{
-nnoremap <F3> :Autoformat<CR>
+nnoremap <F12> :Autoformat<CR>
 " }}}
 
+" Fugitive {{{ "
+nnoremap <F5> :Gstatus<CR>
+nnoremap <F6> :Gcommit
+nnoremap <F7> :Gpull
+nnoremap <F8> :Gpush
+" }}} Fugitive "
+
 " FuzzyFinder {{{
-nnoremap <F5> :FufFile<Cr>
+nnoremap <F1> :FufFile<Cr>
+nnoremap <F2> :FufBuffer<Cr>
+nnoremap <F3> :FufTag<Cr>
+nnoremap <F4> :FufBufferTag<Cr>
+
+nnoremap <silent> <C-]> :FufBufferTagAllWithCursorWord!<CR>
+vnoremap <silent> <C-]> :FufBufferTagAllWithSelectedText!<CR>
 " }}}
 
 " YouCompleteMe {{{
@@ -181,7 +225,8 @@ let g:UltiSnipsExpandTrigger="<s-tab>"
 " }}}
 
 " Tagbar {{{ "
-nmap <F8> :TagbarToggle<CR>
+nnoremap <F9> :TagbarOpen fj<CR>
+let g:tagbar_autoclose=0
 " }}} Tagbar "
 
 " Quicktex {{{ "
@@ -321,6 +366,7 @@ command! -nargs=0 -complete=command Line :call EnableCursorLine()<CR>
 " }}}
 
 " Statusline {{{
+" disable insert mode notification since airline shows the current mode
 set noshowmode
 "set laststatus=2
 " }}}
