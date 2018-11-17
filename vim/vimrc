@@ -105,7 +105,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Airline {{{
 let g:airline_detect_iminsert=1
 
-if (match(system('hostname'), helvetica) >= 0)
+if (match(system('hostname'), 'hlvetica') >= 0)
 	let g:airline_powerline_fonts = 0
 else
 	let g:airline_powerline_fonts = 1
