@@ -68,6 +68,8 @@ URxvt.iso14755_52: false
 /* }}} iso */
 
 /* perl extensions {{{ */
+urxvt*perl-lib: /home/daniel/urxvt-vim-scrollback
+urxvt*perl-ext-common: vim-scrollback
 URxvt.perl-ext:    default,searchable-scrollback<C-S-question>,matcher,remote-clipboard,selection-autotransform,font-size
 URxvt.urlLauncher: w3m
 /* }}} perl extensions */

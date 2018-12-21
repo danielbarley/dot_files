@@ -94,6 +94,7 @@ Plugin 'vhda/verilog_systemverilog.vim'
 Plugin 'adelarsq/vim-matchit'
 Plugin 'jreybert/vimagit'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'chrisbra/Recover.vim'
 " }}}
 
 call vundle#end()
@@ -105,19 +106,25 @@ Plugin 'VundleVim/Vundle.vim'
 " Airline {{{
 let g:airline_detect_iminsert=1
 
-if (match(system('hostname'), 'hlvetica') >= 0)
+if (match(system('hostname'), 'helvetica') >= 0)
 	let g:airline_powerline_fonts = 0
-else
-	let g:airline_powerline_fonts = 1
 
 	if !exists('g:airline_symbols')
 		let g:airline_symbols = {}
 	endif
 
+	let g:airline_left_sep = '░'
+	let g:airline_right_sep = '░'
+	let g:airline_symbols.crypt = '〇'
 	let g:airline_symbols.linenr = '↕'
-	let g:airline_symbols.readonly = ''
+	let g:airline_symbols.maxlinenr = '½'
+	let g:airline_symbols.branch = 'ϟ'
+	let g:airline_symbols.paste = 'Þ'
+	let g:airline_symbols.spell = 'Ꞩ'
 	let g:airline_symbols.notexists = 'Ɇ'
 	let g:airline_symbols.whitespace = 'Ξ'
+else
+	let g:airline_powerline_fonts = 1
 
 	let airline#extensions#syntastic#warning_symbol = '☼'
 	let airline#extensions#syntastic#error_symbol = '✗'
@@ -247,9 +254,9 @@ let g:quicktex_math = {
     \'SI'   : '\SI{<+++>}{<++>} <++>',
     \'set'  : '\{ <+++> \} <++>',
     \'frac' : '\frac{<+++>}{<++>} <++>',
-    \'sqrt' : '\sqrt{<+++>}{<++>} <++>',
-    \'sub'  : '_{<+++>} <++>',
-    \'pow'  : '^{<+++>} <++>',
+    \'sqrt' : '\sqrt{<+++>} <++>',
+    \'sub'  : '\<Del>_{<+++>} <++>',
+    \'pow'  : '\<Del>^{<+++>} <++>',
     \'nabla': '\nabla',
     \'del'  : '\partial',
     \'in'   : '\in ',
