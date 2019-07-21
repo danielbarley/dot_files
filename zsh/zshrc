@@ -1,0 +1,31 @@
+zstyle ':completion:*' auto-description 'specify %d'
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' file-sort name
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' ignore-parents parent pwd directory
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*'
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename '/home/daniel/.zshrc'
+
+fpath+=~/.zfunc
+autoload -Uz compinit
+compinit
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=10000
+setopt extendedglob
+unsetopt autocd beep
+bindkey -v
+[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
+source ~/.bash_aliases
+
+export EDITOR='vim'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export PATH=$PATH:$HOME/.scripts:/opt
+
+fortune computers -s | cowsay -f charizardvice

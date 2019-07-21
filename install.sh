@@ -33,6 +33,10 @@ then
 	ln -sfv ${BASEDIR}/bash/bashrc ~/.bashrc
 	ln -sfv ${BASEDIR}/bash/bash_aliases ~/.bash_aliases
 
+	#zsh
+
+	ln -sfv ${BASEDIR}/zsh/zshrc ~/.zshrc
+
 	#X11
 
 	ln -svf ${BASEDIR}/X11/Xresources ~/.Xresources

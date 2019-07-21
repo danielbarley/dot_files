@@ -1,6 +1,10 @@
 # ~/.bash_aliases
 
 # modify existing commands {{{ #
+if [[ $(hostname -s) -eq 'moria' ]]; then
+	alias ls="exa -l --git"
+fi
+
 alias mkdir="mkdir -pv"
 alias df="df -Tha --total"
 alias du="du -ach | sort -h"
@@ -11,8 +15,15 @@ alias vim="nvim"
 # }}} modify existing commands #
 
 # new commands {{{ #
-alias la="ls -lhA"
+alias la="ls -la"
+alias tree="exa --tree --long"
 alias fhere="find . -name "
 alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias histgrep="history | grep"
+alias weather="curl 'wttr.in/?u'"
 # }}} new commands #
+
+# pacman {{{ #
+alias pacinstall="sudo pacman -Syu"
+alias pacsearch="pacman -Ss"
+# }}} pacman #

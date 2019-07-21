@@ -4,7 +4,7 @@
 *international: true
 *customization: -color
 
-*color0:  #282828
+*color0:  #1d2021
 *color1:  #cc241d
 *color2:  #98971a
 *color3:  #d79921
@@ -41,7 +41,7 @@ URxvt.scrollstyle: plain
 
 /* colors {{{ */
 urxvt*depth: 32
-Rxvt*background:   #282828
+Rxvt*background:   #1d2021
 Rxvt*foreground:   #ebdbb2
 URxvt.underlineColor: #777777
 /* }}} colors */
@@ -54,7 +54,7 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 #define FONTSIZE 8
-#define FONT Terminess Powerline
+#define FONT xos4 Terminess Powerline
 URxvt.font: xft:FONT:size=FONTSIZE,style=regular
 URxvt.boldFont: xft:FONT:size=FONTSIZE,style=bold
 URxvt.italicFont: xft:FONT:size=FONTSIZE,style=italic

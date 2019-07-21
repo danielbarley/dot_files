@@ -79,6 +79,7 @@ fi
 # }}} completion #
 
 # junk {{{ #
-fortune computers -s | cowsay -f owl | boxes -d diamonds
+#fortune computers -s | cowsay -f owl | boxes -d diamonds
+fortune computers -s | cowsay
 [[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
 # }}} junk #

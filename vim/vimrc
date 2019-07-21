@@ -62,7 +62,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'Raimondi/delimitMate'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'flazz/vim-colorschemes'
+"Plugin 'flazz/vim-colorschemes'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -80,12 +80,12 @@ Plugin 'valloric/YouCompleteMe'
 Plugin 'morhetz/gruvbox'
 Plugin 'nvie/vim-flake8'
 Plugin 'reedes/vim-lexical'
-Plugin 'severin-lemaignan/vim-minimap'
+"Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'chrisbra/csv.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'brennier/quicktex'
 "Plugin 'godlygeek/csapprox'
-Plugin 'quabug/vim-gdscript'
+"Plugin 'quabug/vim-gdscript'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'airblade/vim-gitgutter'
 "Plugin 'edkolev/promptline.vim'
@@ -95,6 +95,9 @@ Plugin 'adelarsq/vim-matchit'
 Plugin 'jreybert/vimagit'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'chrisbra/Recover.vim'
+Plugin 'vimwiki/vimwiki'
+Plugin 'vim-scripts/TagHighlight'
+Plugin 'NLKNguyen/papercolor-theme'
 " }}}
 
 call vundle#end()
@@ -183,11 +186,13 @@ let g:LatexBox_latexmk_async=0
 let g:LatexBox_output_type="pdf"
 let g:LatexBox_quickfix=2
 let g:LatexBox_show_warnings=0
+let g:LatexBox_latexmk_async=1
 let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
 "let g:LatexBox_latexmk_options="-pdf -xelatex"
 let g:LatexBox_viewer="zathura"
 let g:LatexBox_fold_toc=0
 let g:tex_flavor='latex'
+let g:tex_bibtexflavor='biber'
 map <leader>lt :LatexTOCToggle<CR>
 map <leader>lm :w<CR>:Latexmk<CR>
 map <leader>lv :LatexView<CR>
@@ -222,6 +227,7 @@ vnoremap <silent> <C-]> :FufBufferTagAllWithSelectedText!<CR>
 " YouCompleteMe {{{
 let g:ycm_key_list_previous_completion=['<Up>']
 let g:ycm_global_ycm_extra_conf="~/.vim/.ycm_global_ycm_extra_conf.py"
+let g:ycm_semantic_triggers =  { 'c' : ['->', '.', 're!SDL'] }
 " }}}
 
 " UltiSnips {{{
@@ -338,9 +344,23 @@ let g:gruvbox_italic=1
 let g:gruvbox_bold=1
 let g:gruvbox_underline=1
 let g:gruvbox_undercurl=1
-let g:gruvbox_contrast_dark="medium"
+let g:gruvbox_contrast_dark="hard"
 let g:gruvbox_improved_warnings=1
 let g:gruvbox_invert_indent_guides=1
+
+"let g:PaperColor_Theme_Options = {
+  "\   'language': {
+  "\     'python': {
+  "\       'highlight_builtins' : 1
+  "\     },
+  "\     'cpp': {
+  "\       'highlight_standard_library': 1
+  "\     },
+  "\     'c': {
+  "\       'highlight_builtins' : 1
+  "\     }
+  "\   }
+  "\ }
 colorscheme gruvbox
 " }}}
 
