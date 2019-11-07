@@ -98,6 +98,8 @@ Plugin 'chrisbra/Recover.vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'vim-scripts/TagHighlight'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'szymonmaszke/vimpyter'
+Plugin 'vlaadbrain/gnuplot.vim'
 " }}}
 
 call vundle#end()
@@ -173,7 +175,7 @@ let g:syntastic_warning_symbol = "\u26A0"
 " }}}
 
 " NerdTree {{{
-noremap <C-f> :NERDTreeToggle<CR>
+noremap <C-t> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos="right"
 "}}}
 
@@ -269,6 +271,16 @@ let g:quicktex_math = {
 \}
 " }}} Quicktex "
 
+" vimpyter {{{ "
+autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
+autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
+" }}} vimpyter "
+
+" TermDebug {{{ "
+packadd termdebug
+let g:termdebug_wide=1
+" }}} TermDebug "
 " }}}
 
 " Filetype Specifics {{{

@@ -83,3 +83,4 @@ fi
 fortune computers -s | cowsay
 [[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
 # }}} junk #
+source /home/daniel/source/vcpkg/scripts/vcpkg_completion.bash
