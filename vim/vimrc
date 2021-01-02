@@ -45,6 +45,10 @@ nnoremap <leader>c :set cursorline! cursorcolumn!<CR>
 " Kill all trailing whitespaces
 nnoremap <leader>wh :%s/\s\+$//e
 
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 " }}}
 
 " Plugins {{{
@@ -270,6 +274,15 @@ autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
 autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 " }}} vimpyter "
 
+" ClangFormat {{{ "
+let clang_format#style_options={"BasedOnStyle": "LLVM",
+	\"IndentWidth": 8,
+	\"UseTab": "AlignWithSpaces",
+	\"BreakBeforeBraces": "Linux",
+	\"AllowShortIfStatementsOnASingleLine": "false",
+	\"IndentCaseLabels": "false"}
+" }}} ClangFormat "
+
 " TermDebug {{{ "
 packadd termdebug
 let g:termdebug_wide=1
@@ -315,7 +328,7 @@ let g:tex_conceal=""
 " Prose(tex, txt, markdown {{{
 augroup lexical
     autocmd!
-    autocmd Filetype markdown, mkd call lexical#init()
+    autocmd Filetype markdown call lexical#init()
     autocmd Filetype tex call lexical#init()
     autocmd FileType text call lexical#init()
 augroup END
@@ -337,6 +350,10 @@ set foldmethod=marker
 " Tabs {{{
 set list
 set listchars=tab:>-
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
 " }}}
 
 " Colors {{{
