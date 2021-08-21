@@ -181,13 +181,11 @@ map <leader>tb :Tabularize/
 " }}}
 
 " {{{ Latex-Box
-let g:LatexBox_latexmk_async=0
+let g:LatexBox_latexmk_async=1
 let g:LatexBox_output_type="pdf"
 let g:LatexBox_quickfix=2
 let g:LatexBox_show_warnings=0
-let g:LatexBox_latexmk_async=1
 let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
-"let g:LatexBox_latexmk_options="-pdf -xelatex"
 let g:LatexBox_viewer="zathura"
 let g:LatexBox_fold_toc=0
 let g:tex_flavor='latex'
@@ -230,7 +228,7 @@ let g:ycm_semantic_triggers =  { 'c' : ['->', '.', 're!SDL'] }
 " }}}
 
 " UltiSnips {{{
-let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<tab><enter>"
 " }}}
 
 " vim-lexical {{{
@@ -327,10 +325,10 @@ let g:tex_conceal=""
 
 " Prose(tex, txt, markdown {{{
 augroup lexical
-    autocmd!
-    autocmd Filetype markdown call lexical#init()
-    autocmd Filetype tex call lexical#init()
-    autocmd FileType text call lexical#init()
+	autocmd!
+	autocmd Filetype markdown call lexical#init()
+	autocmd Filetype tex call lexical#init()
+	autocmd FileType text call lexical#init()
 augroup END
 " }}}
 " }}}
@@ -358,6 +356,7 @@ set noexpandtab
 
 " Colors {{{
 syntax enable
+syntax spell toplevel
 set t_Co=256
 autocmd GUIEnter * set vb t_vb=
 autocmd VimEnter * set vb t_vb=
