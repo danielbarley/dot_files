@@ -192,13 +192,9 @@ let g:LatexBox_latexmk_async=1
 let g:LatexBox_output_type="pdf"
 let g:LatexBox_quickfix=2
 let g:LatexBox_show_warnings=0
-<<<<<<< HEAD
-let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
-=======
 let g:LatexBox_latexmk_async=1
 let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex -shell-escape -synctex=1 \%O \%S'"
 "let g:LatexBox_latexmk_options="-pdf -xelatex"
->>>>>>> 040b9645556aae357d4548931bf8ed725ab6e679
 let g:LatexBox_viewer="zathura"
 let g:LatexBox_fold_toc=0
 let g:tex_flavor='latex'
@@ -347,21 +343,10 @@ let g:tex_conceal=""
 
 " Prose(tex, txt, markdown {{{
 augroup lexical
-<<<<<<< HEAD
 	autocmd!
 	autocmd Filetype markdown call lexical#init()
 	autocmd Filetype tex call lexical#init()
 	autocmd FileType text call lexical#init()
-=======
-    autocmd!
-<<<<<<< HEAD
-    "autocmd Filetype markdown, mkd call lexical#init()
-=======
-    autocmd Filetype markdown call lexical#init()
->>>>>>> c6bfde65730e24037fa0df1ceb20919cfa2b1793
-    autocmd Filetype tex call lexical#init()
-    autocmd FileType text call lexical#init()
->>>>>>> 040b9645556aae357d4548931bf8ed725ab6e679
 augroup END
 " }}}
 " }}}
