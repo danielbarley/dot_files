@@ -97,6 +97,11 @@ Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'vim-scripts/Tabmerge'
 Plugin 'sotte/presenting.vim'
 Plugin 'sirtaj/vim-openscad'
+Plugin 'stevearc/vim-arduino'
+Plugin 'diepm/vim-rest-console'
+Plugin 'rhysd/vim-grammarous'
+Plugin 'Rigellute/shades-of-purple.vim'
+Plugin 'rdnetto/YCM-Generator'
 " }}}
 
 call vundle#end()
@@ -107,31 +112,33 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin Settings {{{
 " Airline {{{
 let g:airline_detect_iminsert=1
+let g:shadesof_purple_airline=1
+let g:airline_theme='shades_of_purple'
 
-if (match(system('hostname'), 'helvetica') >= 0)
+if (match(system('hostname'), 'imladris') >= 0)
 	let g:airline_powerline_fonts = 0
 
-	if !exists('g:airline_symbols')
-		let g:airline_symbols = {}
-	endif
+	"if !exists('g:airline_symbols')
+		"let g:airline_symbols = {}
+	"endif
 
-	let g:airline_left_sep = '░'
-	let g:airline_right_sep = '░'
-	let g:airline_symbols.crypt = '〇'
-	let g:airline_symbols.linenr = '↕'
-	let g:airline_symbols.maxlinenr = '½'
-	let g:airline_symbols.branch = 'ϟ'
-	let g:airline_symbols.paste = 'Þ'
-	let g:airline_symbols.spell = 'Ꞩ'
-	let g:airline_symbols.notexists = 'Ɇ'
-	let g:airline_symbols.whitespace = 'Ξ'
-else
-	let g:airline_powerline_fonts = 1
+	"let g:airline_left_sep = '░'
+	"let g:airline_right_sep = '░'
+	"let g:airline_symbols.crypt = '〇'
+	"let g:airline_symbols.linenr = '↕'
+	"let g:airline_symbols.maxlinenr = '½'
+	"let g:airline_symbols.branch = 'ϟ'
+	"let g:airline_symbols.paste = 'Þ'
+	"let g:airline_symbols.spell = 'Ꞩ'
+	"let g:airline_symbols.notexists = 'Ɇ'
+	"let g:airline_symbols.whitespace = 'Ξ'
+"else
+	"let g:airline_powerline_fonts = 1
 
-	let airline#extensions#syntastic#warning_symbol = '☼'
-	let airline#extensions#syntastic#error_symbol = '✗'
-	let g:airline#extensions#ycm#error_symbol = '☼'
-	let g:airline#extensions#ycm#warning_symbol = '✗'
+	"let airline#extensions#syntastic#warning_symbol = '☼'
+	"let airline#extensions#syntastic#error_symbol = '✗'
+	"let g:airline#extensions#ycm#error_symbol = '☼'
+	"let g:airline#extensions#ycm#warning_symbol = '✗'
 endif
 
 let g:airline#extensions#cursormode#enabled = 0
@@ -185,7 +192,13 @@ let g:LatexBox_latexmk_async=1
 let g:LatexBox_output_type="pdf"
 let g:LatexBox_quickfix=2
 let g:LatexBox_show_warnings=0
+<<<<<<< HEAD
 let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex --shell-escape -synctex=1 \%O \%S'"
+=======
+let g:LatexBox_latexmk_async=1
+let g:LatexBox_latexmk_options="-pdf -pdflatex='pdflatex -shell-escape -synctex=1 \%O \%S'"
+"let g:LatexBox_latexmk_options="-pdf -xelatex"
+>>>>>>> 040b9645556aae357d4548931bf8ed725ab6e679
 let g:LatexBox_viewer="zathura"
 let g:LatexBox_fold_toc=0
 let g:tex_flavor='latex'
@@ -224,7 +237,7 @@ vnoremap <silent> <C-]> :FufBufferTagAllWithSelectedText!<CR>
 " YouCompleteMe {{{
 let g:ycm_key_list_previous_completion=['<Up>']
 let g:ycm_global_ycm_extra_conf="~/.vim/.ycm_global_ycm_extra_conf.py"
-let g:ycm_semantic_triggers =  { 'c' : ['->', '.', 're!SDL'] }
+let g:ycm_semantic_triggers =  { 'c' : ['->', '.', 're!SDL', 're!gl'] }
 " }}}
 
 " UltiSnips {{{
@@ -285,6 +298,15 @@ let clang_format#style_options={"BasedOnStyle": "LLVM",
 packadd termdebug
 let g:termdebug_wide=1
 " }}} TermDebug "
+
+" clang-format {{{ "
+let g:clang_format#style_options = {
+			\ "BasedOnStyle": "LLVM",
+			\ "IndentWidth": 8,
+			\ "UseTab": "Always",
+			\ "AllowShortIfStatementsOnASingleLine": "false",
+			\ "IndentCaseLabels": "false"}
+" }}} clang-format "
 " }}}
 
 " Filetype Specifics {{{
@@ -325,10 +347,21 @@ let g:tex_conceal=""
 
 " Prose(tex, txt, markdown {{{
 augroup lexical
+<<<<<<< HEAD
 	autocmd!
 	autocmd Filetype markdown call lexical#init()
 	autocmd Filetype tex call lexical#init()
 	autocmd FileType text call lexical#init()
+=======
+    autocmd!
+<<<<<<< HEAD
+    "autocmd Filetype markdown, mkd call lexical#init()
+=======
+    autocmd Filetype markdown call lexical#init()
+>>>>>>> c6bfde65730e24037fa0df1ceb20919cfa2b1793
+    autocmd Filetype tex call lexical#init()
+    autocmd FileType text call lexical#init()
+>>>>>>> 040b9645556aae357d4548931bf8ed725ab6e679
 augroup END
 " }}}
 " }}}
@@ -361,13 +394,14 @@ set t_Co=256
 autocmd GUIEnter * set vb t_vb=
 autocmd VimEnter * set vb t_vb=
 set background=dark
-let g:gruvbox_italic=1
-let g:gruvbox_bold=1
-let g:gruvbox_underline=1
-let g:gruvbox_undercurl=1
-let g:gruvbox_contrast_dark="hard"
-let g:gruvbox_improved_warnings=1
-let g:gruvbox_invert_indent_guides=1
+"let g:gruvbox_italic=1
+"let g:gruvbox_bold=1
+"let g:gruvbox_underline=1
+"let g:gruvbox_undercurl=1
+"let g:gruvbox_contrast_dark="hard"
+"let g:gruvbox_contrast_light="medium"
+"let g:gruvbox_improved_warnings=1
+"let g:gruvbox_invert_indent_guides=1
 
 "let g:PaperColor_Theme_Options = {
   "\   'language': {
@@ -382,7 +416,12 @@ let g:gruvbox_invert_indent_guides=1
   "\     }
   "\   }
   "\ }
-colorscheme gruvbox
+"colorscheme gruvbox
+"colorscheme elflord
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"  
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+colorscheme black_cherries
 " }}}
 
 " Functions {{{
