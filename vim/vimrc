@@ -102,6 +102,7 @@ Plugin 'diepm/vim-rest-console'
 Plugin 'rhysd/vim-grammarous'
 Plugin 'Rigellute/shades-of-purple.vim'
 Plugin 'rdnetto/YCM-Generator'
+Plugin 'nightsense/vimspectr'
 " }}}
 
 call vundle#end()
@@ -387,26 +388,9 @@ set background=dark
 "let g:gruvbox_contrast_light="medium"
 "let g:gruvbox_improved_warnings=1
 "let g:gruvbox_invert_indent_guides=1
-
-"let g:PaperColor_Theme_Options = {
-  "\   'language': {
-  "\     'python': {
-  "\       'highlight_builtins' : 1
-  "\     },
-  "\     'cpp': {
-  "\       'highlight_standard_library': 1
-  "\     },
-  "\     'c': {
-  "\       'highlight_builtins' : 1
-  "\     }
-  "\   }
-  "\ }
 "colorscheme gruvbox
-"colorscheme elflord
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"  
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-colorscheme black_cherries
+let g:vimspectrLineNr = 'off'
+colorscheme vimspectr330-dark
 " }}}
 
 " Functions {{{
