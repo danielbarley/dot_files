@@ -70,10 +70,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'sjl/gundo.vim'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'mileszs/ack.vim'
-Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'eparreno/vim-l9'
 Plugin 'lukerandall/haskellmode-vim'
 Plugin 'Yggdroot/indentLine'
@@ -92,17 +89,11 @@ Plugin 'jreybert/vimagit'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'chrisbra/Recover.vim'
 Plugin 'vimwiki/vimwiki'
-Plugin 'vim-scripts/TagHighlight'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'vim-scripts/Tabmerge'
 Plugin 'sotte/presenting.vim'
 Plugin 'sirtaj/vim-openscad'
 Plugin 'stevearc/vim-arduino'
-Plugin 'diepm/vim-rest-console'
-Plugin 'rhysd/vim-grammarous'
-Plugin 'Rigellute/shades-of-purple.vim'
 Plugin 'rdnetto/YCM-Generator'
-Plugin 'nightsense/vimspectr'
+Plugin 'pineapplegiant/spaceduck'
 " }}}
 
 call vundle#end()
@@ -114,7 +105,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Airline {{{
 let g:airline_detect_iminsert=1
 let g:shadesof_purple_airline=1
-let g:airline_theme='shades_of_purple'
+let g:airline_theme='spaceduck'
 
 if (match(system('hostname'), 'imladris') >= 0)
 	let g:airline_powerline_fonts = 0
@@ -206,10 +197,6 @@ map <leader>lv :LatexView<CR>
 let g:LatexBox_custom_indent=0
 " }}}
 
-" Gundo {{{
-nnoremap <F10> :GundoToggle<CR>
-" }}}
-
 " Autoformat {{{
 nnoremap <F12> :Autoformat<CR>
 " }}}
@@ -275,12 +262,6 @@ let g:quicktex_math = {
     \'in'   : '\in ',
 \}
 " }}} Quicktex "
-
-" vimpyter {{{ "
-autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
-autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
-autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
-" }}} vimpyter "
 
 " ClangFormat {{{ "
 let clang_format#style_options={"BasedOnStyle": "LLVM",
@@ -389,8 +370,13 @@ set background=dark
 "let g:gruvbox_improved_warnings=1
 "let g:gruvbox_invert_indent_guides=1
 "colorscheme gruvbox
-let g:vimspectrLineNr = 'off'
-colorscheme vimspectr330-dark
+if exists('+termguicolors')
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	set termguicolors
+endif
+
+colorscheme spaceduck
 " }}}
 
 " Functions {{{
@@ -412,13 +398,13 @@ endfunction
 
 " Commands {{{
 " open the vimrc file in new buffer
-command! -nargs=0 -complete=command Vimrc tabe $MYVIMRC
+"command! -nargs=0 -complete=command Vimrc tabe $MYVIMRC
 " change spelling language to german
-command! -nargs=0 -complete=command SpellGer setlocal spelllang=de
+"command! -nargs=0 -complete=command SpellGer setlocal spelllang=de
 " change spelling language to english
-command! -nargs=0 -complete=command SpellEng setlocal spelllang=en
+"command! -nargs=0 -complete=command SpellEng setlocal spelllang=en
 " Change Cursorline to actual line
-command! -nargs=0 -complete=command Line :call EnableCursorLine()<CR>
+"command! -nargs=0 -complete=command Line :call EnableCursorLine()<CR>
 " }}}
 
 " Statusline {{{
