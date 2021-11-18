@@ -11,7 +11,7 @@ alias du="du -ach | sort -h"
 alias ps="ps auxf"
 alias free="free -mt"
 alias wget="wget -c"
-alias vim="nvim"
+#alias vim="nvim"
 # }}} modify existing commands #
 
 # new commands {{{ #

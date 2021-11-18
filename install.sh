@@ -6,45 +6,29 @@ read -p "This will overwrite any existing config, are you sure? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	#vim
 
+	# vim {{{ #
 	ln -sfv ${BASEDIR}/vim/vimrc ~/.vimrc
 
 	rm -rf ~/.vim
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-	read -p "Using NeoVim? " -n 1 -r
-	echo
-	if [[ $REPLY =~ ^[Yy]$ ]]
-	then
-		mkdir -pv ~/.config/nvim
-		ln -sfv ~/.vim ~/.config/nvim
-		ln -sfv ${BASEDIR}/vim/vimrc ~/.config/nvim/init.vim
-	fi
-
 	vim +PluginInstall
+	# }}} vim #
 
-	#tmux
-
+	# tmux {{{ #
 	ln -sfv ${BASEDIR}/tmux/tmux.conf ~/.tmux.conf
+	# }}} tmux #
 
-	#bash
-
-	ln -sfv ${BASEDIR}/bash/bashrc ~/.bashrc
-	ln -sfv ${BASEDIR}/bash/bash_aliases ~/.bash_aliases
-
-	#zsh
-
+	# zsh {{{ #
 	ln -sfv ${BASEDIR}/zsh/zshrc ~/.zshrc
+	ln -sfv ${BASEDIR}/zsh/aliases ~/.aliases
+	# }}} zsh #
 
-	#X11
-
-	ln -svf ${BASEDIR}/X11/Xresources ~/.Xresources
-	xrdb -merge ~/.Xresources
-
-	#liquidprompt
-
+	# liquidprompt {{{ #
+	git clone --branch stable https://github.com/nojhan/liquidprompt.git ~/liquidprompt
 	ln -svf ${BASEDIR}/liquidprompt/liquidpromptrc ~/.config/liquidpromptrc
 	ln -svf ${BASEDIR}/liquidprompt/prompt.theme ~/.config/prompt.theme
+	# }}} liquidprompt #
 
 fi
