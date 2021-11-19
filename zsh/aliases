@@ -11,7 +11,7 @@ alias du="du -ach | sort -h"
 alias ps="ps auxf"
 alias free="free -mt"
 alias wget="wget -c"
-#alias vim="nvim"
+alias vim="vim --servername vimserver"
 # }}} modify existing commands #
 
 # new commands {{{ #
@@ -21,13 +21,4 @@ alias fhere="find . -name "
 alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias histgrep="history | grep"
 alias weather="curl 'wttr.in/?u'"
-# Invoke Vcpkg with the "asc-vcpkg-ports" ports overlay.
-alias my-vcpkg="'$HOME/source/vcpkg/vcpkg' --overlay-ports='$HOME/source/repos/asc-vcpkg-ports/vcpkg/ports'"
-# Invoke CMake with the Vcpkg toolchain.
-alias cmake-configure="cmake -DCMAKE_TOOLCHAIN_FILE='$HOME/source/vcpkg/scripts/buildsystems/vcpkg.cmake'"
 # }}} new commands #
-
-# pacman {{{ #
-alias pacinstall="sudo pacman -Syu"
-alias pacsearch="pacman -Ss"
-# }}} pacman #
