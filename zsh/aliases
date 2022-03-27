@@ -1,5 +1,3 @@
-# ~/.bash_aliases
-
 # modify existing commands {{{ #
 if [[ $(hostname -s) -eq 'moria' ]]; then
 	alias ls="exa -l --git"

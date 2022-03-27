@@ -15,9 +15,7 @@ zstyle :compinstall filename '/home/daniel/.zshrc'
 fpath+=~/.zfunc
 autoload -Uz compinit promptinit
 compinit
-promptinit; prompt gentoo
-[ -n "$PS1" ] && sh ~/.vimspectr-shell/vimspectr330-dark
-eval `dircolors ~/.vimspectr-shell/dircolors`
+promptinit #; prompt gentoo
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=10000
@@ -31,6 +29,11 @@ export EDITOR='vim'
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export PATH=$PATH:$HOME/.scripts:/opt
 #. spack/share/spack/setup-env.sh
-source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
-zsh ~/scripts/pokemon.sh
+source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
+fortune computers -s | cowsay -f `shuf -n 1 $HOME/.cows`
+#zsh ~/scripts/pokemon.sh
 #eval "$(starship init zsh)"
+source ~/.zplug/init.zsh
+zplug "dracula/zsh",as:theme
+ZSH_THEME="dracula"

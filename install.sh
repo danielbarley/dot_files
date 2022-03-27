@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -27,6 +27,7 @@ then
 	# }}} zsh #
 
 	# liquidprompt {{{ #
+	rm -rf ~/liquidprompt
 	git clone --branch stable https://github.com/nojhan/liquidprompt.git ~/liquidprompt
 	ln -svf ${BASEDIR}/liquidprompt/liquidpromptrc ~/.config/liquidpromptrc
 	ln -svf ${BASEDIR}/liquidprompt/prompt.theme ~/.config/prompt.theme

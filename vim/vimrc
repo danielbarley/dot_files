@@ -94,6 +94,7 @@ Plugin 'sirtaj/vim-openscad'
 Plugin 'stevearc/vim-arduino'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'pineapplegiant/spaceduck'
+Plugin 'dracula/vim',{'name':'dracula'}
 " }}}
 
 call vundle#end()
@@ -105,7 +106,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Airline {{{
 let g:airline_detect_iminsert=1
 let g:shadesof_purple_airline=1
-let g:airline_theme='spaceduck'
+let g:airline_theme='dracula'
 
 if (match(system('hostname'), 'imladris') >= 0)
 	let g:airline_powerline_fonts = 0
@@ -376,7 +377,8 @@ if exists('+termguicolors')
 	set termguicolors
 endif
 
-colorscheme spaceduck
+colorscheme dracula
+"colorscheme elflord
 " }}}
 
 " Functions {{{
