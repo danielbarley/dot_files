@@ -25,14 +25,14 @@ local options = {
 	-- Tabs
 	list = true,
 	listchars = "tab:>-,trail:.,lead:.",
-	tabstop = 4,
-	softtabstop = 4,
-	shiftwidth = 4,
+	tabstop = 2,
+	softtabstop = 2,
+	shiftwidth = 2,
 	expandtab = false,
 	-- Misc
 	showcmd = true,
 	cmdheight = 1,
-	completeopt = { "menuone", "noselect"  },
+	completeopt = { "menu", "menuone", "noselect"  },
 	conceallevel = 0,
 	fileencoding = "utf-8",
 	showmode = false,

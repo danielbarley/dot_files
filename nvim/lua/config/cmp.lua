@@ -91,38 +91,40 @@ cmp.setup {
 		"i",
 		"s",
 	}),
-  },
-  formatting = {
-	  fields = { "kind", "abbr", "menu" },
-	  format = function(entry, vim_item)
-		  -- Kind icons
-		  vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-		  vim_item.menu = ({
-				  luasnip = "[Snippet]",
-				  buffer = "[Buffer]",
-				  path = "[Path]",
-			  })[entry.source.name]
-		  return vim_item
-	  end,
-  },
-  sources = {
-	  { name = "nvim_lsp" },
-	  { name = "nvim_lua" },
-	  { name = "luasnip" },
-	  { name = "buffer" },
-	  { name = "path" },
-	  { name = "calc" },
-	  { name = "cmdline" },
-  },
-  confirm_opts = {
-	  behavior = cmp.ConfirmBehavior.Replace,
-	  select = false,
-  },
-  documentation = {
-	  border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-  },
-  experimental = {
-	  ghost_text = false,
-	  native_menu = false,
-  },
+	},
+	  formatting = {
+		  fields = { "kind", "abbr", "menu" },
+		  format = function(entry, vim_item)
+			  -- Kind icons
+			  vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+			  vim_item.menu = ({
+					  nvim_lsp = "[LSP]",
+					  luasnip = "[Snippet]",
+					  buffer = "[Buffer]",
+					  path = "[Path]",
+				  })[entry.source.name]
+			  return vim_item
+		  end,
+		},
+	  sources = {
+		  { name = "nvim_lsp" },
+		  { name = "nvim_lua" },
+		  { name = "luasnip" },
+		  { name = "buffer" },
+		  { name = "path" },
+		  { name = "calc" },
+		  --{ name = "cmdline" },
+	  },
+	  confirm_opts = {
+		  behavior = cmp.ConfirmBehavior.Replace,
+		  select = false,
+	  },
+	  view = {
+		  entries = 'native',
+	  },
+	cmp.setup.cmdline("/", {
+		view = {
+			entries = {name = 'wildmenu', separator = '|'}
+		},
+	})
 }
